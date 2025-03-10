@@ -1,26 +1,24 @@
-import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import { Header } from "./components/Header/Header"
+import { Home } from "./pages/Home/Home";
+import { Error } from "./pages/Error/Error";
+import { Footer } from "./components/Footer/Footer";
 
 import './styles/global.scss';
 
 function App() {
 
-  const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    setLoading(true)
-    fetch(``)
-      .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.log(err))
-      .finally(() => setLoading(false))
-  }, [])
-
   return (
-    <>
+    <div className="wrapper">
       <Header />
-      {loading && <p>Loading...</p>}
-    </>
+      <main className="container">
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='*' element={<Error />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   )
 }
 

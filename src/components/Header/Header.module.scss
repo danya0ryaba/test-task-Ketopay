@@ -1,4 +1,98 @@
-.title {
-    font-size: 40px;
+@use '../../styles/variables/variables.scss' as *;
+
+.header {
+    height: 72px;
+    padding: 21px 0 22px;
+    position: relative;
     text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $border;
+
+    .wrapper_burger {
+        display: none;
+
+        .burger {
+            width: 20px;
+            height: 2.25px;
+            background-color: $text;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+
+            &::after,
+            &::before {
+                content: '';
+                width: 20px;
+                height: 2.25px;
+                background-color: $text;
+                position: absolute;
+                top: 4.5px;
+            }
+
+            &::before {
+                top: -4.5px;
+            }
+
+        }
+
+        .title {
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 10%;
+            text-align: center;
+        }
+
+    }
+
+    .burger__active {
+        display: block;
+    }
+
+}
+
+.nav {
+    display: none;
+
+    .nav__list {
+        display: flex;
+        justify-content: center;
+        gap: 28px;
+
+        .link {
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: 10%;
+            cursor: pointer;
+        }
+
+        @media (max-width:$mobile) {
+            flex-direction: column;
+            position: absolute;
+            top: 145px;
+            left: 0;
+            padding-left: 20px;
+        }
+    }
+
+}
+
+.nav_active {
+    display: block;
+}
+
+.close {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.active {
+    display: block;
 }
